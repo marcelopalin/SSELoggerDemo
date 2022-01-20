@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "SSE EventSource"
+version = "0.1.0"
+description = "SSE"
+authors = ["Marcelo Palin <mail@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+flake8 = "^3.8.3"
+fastapi = "^0.60.1"
+hypercorn = "^0.10.2"
+celery = "^4.4.6"
+redis = "^3.5.3"
+uvicorn = "^0.16.0"
+sse-starlette = "^0.10.0"
+sh = "^1.14.2"
+dynaconf = "^3.1.7"
+loguru = "^0.5.3"
+termcolor = "^1.1.0"
+aiofiles = "^0.8.0"
+anyio = "^3.5.0"
+requests = "^2.27.1"
+pydantic = {extras = ["email"], version = "^1.9.0"}
+Jinja2 = "^3.0.3"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.8.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

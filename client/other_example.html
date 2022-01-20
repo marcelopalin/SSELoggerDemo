@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Option 1: Include in HTML -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', path='images/logo.svg') }}"
+      sizes="32x32"
+    />
+    <title>API Ampere</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      #logs {
+        background-color: black;
+        color: white;
+        height: 600px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: left;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      class="d-flex flex-column min-vh-100 justify-content-center align-items-center"
+    >
+      <!-- Bloco Ações -->
+      <div class="card col-6 mt-5">
+        <div class="card-header">Exemplo de Conexão e Desconexão com o EventSource</div>
+
+        <div class="container mx-auto mt-5">
+          <div class="row">
+            <div class="col-sm">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="read_logs()"
+              >
+                Leia os Logs
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="close_logs()"
+              >
+                Parar Leitura
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <ul></ul>
+        </div>
+      </div>
+      <div class="card col-6 mt-5">
+        <div class="card-header">Acompanhamento</div>
+
+        <div class="container mx-auto mt-5">
+          <div class="row">
+            <div class="col-sm">
+              <h1>Server Logs:</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div id="logs"></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+
+      let evtSource = null;
+
+      const read_logs = () => {
+        evtSource = new EventSource("http://localhost:8000/stream-logs");
+        evtSource.addEventListener("message", function(event) {
+            // Logic to handle status updates
+            document.getElementById("logs").innerHTML += event.data + "<br>";
+            console.log(event)
+        });
+        evtSource.addEventListener("evento_avisar", function(event) {
+            // Logic to handle status updates
+            document.getElementById("logs").innerHTML += event.data + "<br>";
+            console.log(event)
+        });
+        evtSource.addEventListener("fechado_pelo_servidor", function(event) {
+            console.log('Conexão fechada pelo Servidor....')
+            document.getElementById("logs").innerHTML += "Conexão Fechada pelo Servidor<br>";
+            evtSource.close();
+        });
+
+      };
+      const close_logs = () => {
+        evtSource.close();
+      };
+
+      const exec_comparador = () => {
+        axios
+          .get("http://localhost:8000/comparador")
+          .then((res) => {
+            const resposta = res.data;
+            console.log(`resposta comparador`, resposta);
+          })
+          .catch((error) => console.error(error));
+      };
+    </script>
+  </body>
+</html>

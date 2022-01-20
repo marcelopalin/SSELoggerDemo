@@ -6,11 +6,10 @@ logs are added to our log file.
 
 from fastapi import FastAPI, Request
 from sse_starlette.sse import EventSourceResponse
-from datetime import datetime 
-import uvicorn
+from datetime import datetime
 from sh import tail
 from fastapi.middleware.cors import CORSMiddleware
-import time 
+import time
 import os
 #create our app instance
 app = FastAPI()
@@ -29,11 +28,28 @@ LOGFILE = f"{dir_path}/test.log"
 #This async generator will listen to our log file in an infinite while loop (happens in the tail command)
 #Anytime the generator detects a new line in the log file, it will yield it.
 async def logGenerator(request):
+    status_stream_retry_timeout = 3000 # 3s
+    count = 0
     for line in tail("-f", LOGFILE, _iter=True):
         if await request.is_disconnected():
+            print("="*80)
             print("client disconnected!!!")
+            print("="*80)
             break
+        count += 1
         yield line
+
+        if count == 2:
+            yield {
+                "event": "evento_avisar",
+                "retry": status_stream_retry_timeout,
+                "data": "Atualizado!",
+            }
+
+        if count == 50:
+            yield {"event": "fechado_pelo_servidor", "data": "Finalizei a leitura do Log"}
+            break
+
         time.sleep(0.5)
 
 #This is our api endpoint. When a client subscribes to this endpoint, they will recieve SSE from our log file
@@ -41,6 +57,3 @@ async def logGenerator(request):
 async def runStatus(request: Request):
     event_generator = logGenerator(request)
     return EventSourceResponse(event_generator)
-
-#run the app
-uvicorn.run(app, host="0.0.0.0", port=8000, debug=True)
