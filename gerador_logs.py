@@ -3,13 +3,13 @@ program.py
 This script will keep adding logs to our logger file.
 """
 
-import logging 
-import time 
+import logging
+import time
 import os
 # create logger with log app
 real_path = os.path.realpath(__file__)
 dir_path = os.path.dirname(real_path)
-LOGFILE = f"{dir_path}/test.log"
+LOGFILE = f"app/logs/log_gerado.log"
 logger = logging.getLogger('log_app')
 logger.setLevel(logging.DEBUG)
 fh = logging.FileHandler(LOGFILE)

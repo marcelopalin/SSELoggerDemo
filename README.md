@@ -13,6 +13,70 @@ Assim que a conexão estiver aberta, mensagens recebidas do servidor são entreg
 Ao contrário dos WebSockets, server-sent events são unidirecionais; ou seja, mensagens são entregues em uma direção, do servidor para o cliente (por exemplo, um navegador web). Isso torna-os uma excelente escolha quando **não há** necessidade de enviar mensagens do cliente para o servidor.
 
 
+# Referências
+
+https://sysid.github.io/sse/
+
+Os eventos enviados pelo servidor fazem parte do padrão HTML, não HTTP 1 . Eles definem um protocolo que é invisível para a camada HTTP e não interrompe nenhuma das camadas inferiores.
+
+Em sua essência, SSE é apenas um **Content-Type** cabeçalho que informa ao cliente que a **resposta será entregue em partes**. Ele também alerta o navegador que ele deve expor cada parte do código à medida que ele chega, e não esperar pela solicitação completa, como os quadros 2 do WebSocket .
+
+No navegador, isso é implementado com a interface fácil de usar **EventSource** no código do lado do cliente:
+
+```js
+var source = new EventSource('updates.cgi');
+source.onmessage = function (event) {
+  alert(event.data);
+}
+
+```
+
+2. https://www.starlette.io/responses/
+
+## StreamingResponse
+
+Takes an async generator or a normal generator/iterator and streams the response body.
+
+```py
+from starlette.responses import StreamingResponse
+import asyncio
+
+
+async def slow_numbers(minimum, maximum):
+    yield('<html><body><ul>')
+    for number in range(minimum, maximum + 1):
+        yield '<li>%d</li>' % number
+        await asyncio.sleep(0.5)
+    yield('</ul></body></html>')
+
+
+async def app(scope, receive, send):
+    assert scope['type'] == 'http'
+    generator = slow_numbers(1, 10)
+    response = StreamingResponse(generator, media_type='text/html')
+    await response(scope, receive, send)
+
+```
+
+3. https://www.abrandao.com/2019/04/html5-eventsource-server-sent-events-tutorial/
+
+
+4. https://www.html5rocks.com/en/tutorials/eventsource/basics/
+
+> Controlling the Reconnection-timeout
+The browser attempts to reconnect to the source roughly 3 seconds after each connection is closed. You can change that timeout by including a line beginning with "retry:", followed by the number of milliseconds to wait before trying to reconnect.
+Exemplo:
+
+```py
+      tempo_de_reconexao = 3000 # 3s
+      yield {
+          "event": "close",
+          "retry": tempo_de_reconexao,
+          "data": number,
+      }
+```
+
+
 ![Demo](/imgs/app_demo.gif?raw=true "Optional Title")
 
 
@@ -57,7 +121,7 @@ Abra um terminal (não esqueça de ativar o ambiente virtual) para iniciar o ger
 no arquivo teste.log:
 
 ```s
-python server/program.py
+python gerador_logs.py
 ```
 
 Em outro terminal (com o ambiente virtual ativado também) rode:

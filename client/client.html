@@ -21,8 +21,8 @@
 </div>
 
 <script>
-  const source = new EventSource("http://localhost:8000/stream-logs");
-  source.onmessage = function(event) {
+  const tunnel_conexao = new EventSource("http://localhost:8000/stream-logs");
+  tunnel_conexao.onmessage = function(event) {
     document.getElementById("logs").innerHTML += event.data + "<br>";
   };
 </script>

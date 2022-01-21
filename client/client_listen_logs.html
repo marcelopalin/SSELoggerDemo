@@ -58,7 +58,7 @@
                 class="btn btn-primary"
                 onclick="close_logs()"
               >
-                Parar Leitura
+                Parar Leitura de Logs
               </button>
             </div>
           </div>
@@ -100,33 +100,30 @@
         evtSource.addEventListener("message", function(event) {
             // Logic to handle status updates
             document.getElementById("logs").innerHTML += event.data + "<br>";
-            console.log(event)
+            console.log(event.data)
         });
         evtSource.addEventListener("evento_avisar", function(event) {
             // Logic to handle status updates
             document.getElementById("logs").innerHTML += event.data + "<br>";
-            console.log(event)
+            console.log("Ouvi neste canal! A atualização!")
         });
-        evtSource.addEventListener("fechado_pelo_servidor", function(event) {
+        evtSource.addEventListener("closed", function(event) {
             console.log('Conexão fechada pelo Servidor....')
             document.getElementById("logs").innerHTML += "Conexão Fechada pelo Servidor<br>";
+            /** Conexao fechada porque o servidor enviou uma mensagem com tag "closed" */
             evtSource.close();
         });
 
       };
+
+
       const close_logs = () => {
+        /** Conexao fechada */
         evtSource.close();
+        document.getElementById("logs").innerHTML += "Conexão Fechada pelo Cliente<br>";
       };
 
-      const exec_comparador = () => {
-        axios
-          .get("http://localhost:8000/comparador")
-          .then((res) => {
-            const resposta = res.data;
-            console.log(`resposta comparador`, resposta);
-          })
-          .catch((error) => console.error(error));
-      };
+
     </script>
   </body>
 </html>
