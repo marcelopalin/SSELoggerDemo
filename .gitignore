@@ -120,3 +120,4 @@ logs/*
 #
 Entrada
 .env
+app/logs/log_gerado.log

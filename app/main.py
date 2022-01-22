@@ -13,6 +13,7 @@ import time
 import os
 import asyncio
 import uuid
+from app.cpu_info import main as cpu_info
 
 #create our app instance
 app = FastAPI()
@@ -25,7 +26,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 real_path = os.path.realpath(__file__)
 dir_path = os.path.dirname(real_path)
@@ -103,3 +103,9 @@ async def send_stream_numbers(request: Request):
 async def send_stream_log(request: Request):
     event_generator = leitor_de_logs(request, close_by_server=False)
     return EventSourceResponse(event_generator)
+
+# Esta rota faz a leitura dos dados do cpu
+@app.get('/stream-cpu-info')
+async def send_stream_cpu():
+    evento_cpu = cpu_info()
+    return EventSourceResponse(evento_cpu)

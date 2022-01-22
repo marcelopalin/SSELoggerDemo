@@ -22,6 +22,7 @@ anyio = "^3.5.0"
 requests = "^2.27.1"
 pydantic = {extras = ["email"], version = "^1.9.0"}
 Jinja2 = "^3.0.3"
+psutil = "^5.9.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.3"

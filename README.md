@@ -80,30 +80,8 @@ Exemplo:
 ![Demo](/imgs/app_demo.gif?raw=true "Optional Title")
 
 
-### Como executa-lo?
+### Sobre este projeto. Como executa-lo?
 
-Utilizando virtualenv:
-
-Crie o ambiente virtual:
-
-```s
-python3 -m venv .venv
-```
-
-Ative o ambiente virtual:
-
-```s
-source .venv/bin/activate
-```
-Instale os pacotes no ambiente:
-
-```s
-pip install -r requirements.txt
-```
-
-ou você pode utilizar o Poetry.
-
-# Instalando com Poetry
 
 Basta ativar o ambiente com o comando:
 
@@ -115,42 +93,28 @@ poetry shell
 poetry install
 ```
 
-# Rodando o Código
+# Rodando Exemplo 1:
 
-Abra um terminal (não esqueça de ativar o ambiente virtual) para iniciar o gerador de Logs que ficará escrevendo de 0.3s uma linha
+Abra um terminal (não esqueça de ativar o ambiente virtual - poetry shell)
+para iniciar o gerador de Logs que ficará escrevendo de 0.3s uma linha
 no arquivo teste.log:
 
 ```s
 python gerador_logs.py
 ```
 
-Em outro terminal (com o ambiente virtual ativado também) rode:
+Ele ficará escrevendo as linhas em: `app/logs/log_gerado.log`
+
+Em outro terminal (com o ambiente virtual ativado também) rode
+para subir o servidor FastAPI
 
 ```s
 uvicorn app.main:app --reload
 ```
 
-E por sua vez, abra a página `client.html` no seu browser e verá os eventos acontecendo.
-
-O Html é bem simples! Ao carregar a página o EvenSource se conecta a rota `http://localhost:8000/stream-logs`
-que fica enviando
-```html
-<body>
-
-<h1>Server Logs:</h1>
-<div id="logs">
-</div>
-
-<script>
-  var source = new EventSource("http://localhost:8000/stream-logs");
-  source.onmessage = function(event) {
-    document.getElementById("logs").innerHTML += event.data + "<br>";
-  };
-</script>
-
-</body>
-</html>
-```
+E por sua vez, abra a página `client/client_listen_logs.html` no seu browser.
+Modifiquei o exemplo para você controlar quando o cliente deseja receber os eventos
+e quando não. Por isto existem dois botões.
 
 # Como funciona?
 
@@ -169,10 +133,29 @@ async def logGenerator(request):
 ```
 
 
-# NOVO EXEMPLO
+# Exemplo 2 - Ouvindo o Gerador de Números
 
-Se abrirmos `client/other_example.html` teremos o mesmo princípio que o outro html
-só que agora com um pouco de controle.
+Se abrirmos `client/client_listen_number.html` teremos o mesmo princípio que o outro html
+só que agora a rota que conectaremos será: `stream-numbers`.
 
-Para começarmos a receber as mensagens do servidor foi adicionado um botão `Ler Logs`.
-Que abrirá a conexão e começará a receber as mensagens.
+Para começarmos a receber as mensagens do servidor foi adicionado um botão `Ler Números`.
+Que abrirá a conexão Server Sent Events (SSE) e começará a receber as mensagens
+enviadas pelo servidor.
+
+O botão parar simplesmente fecha a conexão pelo lado do cliente.
+
+A rota `stream-numbers`
+
+```py
+# Esta rota fica lendo os Números e envia para os Clientes
+@app.get('/stream-numbers')
+async def send_stream_numbers(request: Request):
+    evento = gerador_numeros(1, 10, request)
+    return EventSourceResponse(evento)
+```
+
+chama o gerador de números:
+
+```py
+
+```
