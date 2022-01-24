@@ -50,9 +50,22 @@
                 >Github Pages</a
               >
             </li>
+            <li>
+              <a
+                href="https://liyi-zhou.medium.com/how-to-embed-google-colaboratory-into-medium-in-3-steps-487b525b103c"
+                target="blank"
+                >Inserir Colab na Página</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.profissionaisti.com.br/gist-um-modo-de-compartilhar-blocos-de-codigo/#:~:text=Dentro%20do%20GitHub%20existe%20tamb%C3%A9m,sites%2C%20f%C3%B3runs%20e%20outros%20locais."
+                target="blank"
+                >Gist - insira código dentro da sua página</a
+              >
+            </li>
           </ul>
         </nav>
-        <a href="#"><i class="fa fa-adn fa-2x"></i> </a>
       </header>
 
       <aside class="sidebar">
@@ -65,65 +78,110 @@
         </ul>
       </aside>
 
+      <!-- Main -->
       <section class="main">
-        <h2 id="exemplo01">
-          Realtime Log Streaming with FastAPI and Server-Sent Events
-        </h2>
-        <div class="card">
-          <div class="card-body">
-            Para começar a entender sobre SSE sugiro a leitura do artigo
-            <a
-              href="https://amittallapragada.github.io/docker/fastapi/python/2020/12/23/server-side-events.html"
-            >
-              <b>Veja aqui</b>
-            </a>
+        <!-- Exemplo 01 -->
+        <div id="exemplo01">
+          <h2>Realtime Log Streaming with FastAPI and Server-Sent Events</h2>
+          <div class="card">
+            <div class="card-body">
+              Para começar a entender sobre SSE sugiro a leitura do artigo
+              <a
+                href="https://amittallapragada.github.io/docker/fastapi/python/2020/12/23/server-side-events.html"
+              >
+                <b>Veja aqui</b>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/QyFcl_Fba-k"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+          <div class="card">
+            <div class="card-body">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/QyFcl_Fba-k"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div>
-               <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
               </div>
+            </div>
           </div>
+
+          <div></div>
+          <p>
+            Este projeto de exemplo se utiliza da api
+            https://developer.mozilla.org/pt-BR/docs/Web/API/EventSource A
+            interface EventSource é usada para receber eventos enviados pelo
+            servidor (server-sent events). Ele se conecta via HTTP em um
+            servidor e recebe eventos com o formato text/event-stream.
+          </p>
+
+          <p>
+            A conexão permanece aberta até ser fechada chamando
+            EventSource.close(). Assim que a conexão estiver aberta, mensagens
+            recebidas do servidor são entregues para o seu código na forma de
+            eventos message. Ao contrário dos WebSockets, server-sent events são
+            unidirecionais; ou seja, mensagens são entregues em uma direção, do
+            servidor para o cliente (por exemplo, um navegador web). Isso
+            torna-os uma excelente escolha quando **não há** necessidade de
+            enviar mensagens do cliente para o servidor.
+          </p>
+          <p>
+            <script src="https://gist.github.com/marcelopalin/29d0413b1f7147d7effb9cc9f8b88bbf.js"></script>
+          </p>
         </div>
 
-        <div></div>
-        <p>
-          Este projeto de exemplo se utiliza da api
-          https://developer.mozilla.org/pt-BR/docs/Web/API/EventSource A
-          interface EventSource é usada para receber eventos enviados pelo
-          servidor (server-sent events). Ele se conecta via HTTP em um servidor
-          e recebe eventos com o formato text/event-stream.
-        </p>
+        <!-- Exemplo 02 -->
+        <div id="exemplo02">
+          <h2>Exemplo 02</h2>
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
+              </div>
+            </div>
+          </div>
 
-        <p>
-          A conexão permanece aberta até ser fechada chamando
-          EventSource.close(). Assim que a conexão estiver aberta, mensagens
-          recebidas do servidor são entregues para o seu código na forma de
-          eventos message. Ao contrário dos WebSockets, server-sent events são
-          unidirecionais; ou seja, mensagens são entregues em uma direção, do
-          servidor para o cliente (por exemplo, um navegador web). Isso torna-os
-          uma excelente escolha quando **não há** necessidade de enviar
-          mensagens do cliente para o servidor.
-        </p>
+          <p>
+            Texto do Exemplo 02
+          </p>
+
+        </div>
+
+        <!-- Exemplo 03 -->
+        <div id="exemplo03">
+          <h2>Exemplo 03</h2>
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Texto do Exemplo 02
+          </p>
+
+        </div>
       </section>
 
       <footer>
-        <h3>CSS Grid Layout Example</h3>
-        <p>Hope you enjoyed learning about CSS Grid Layouts!</p>
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="#exemplo01">Exemplo 01</a></li>
+          <li><a href="#exemplo02">Exemplo 02</a></li>
+          <li><a href="#exemplo03">Exemplo 03</a></li>
+          <li><a href="#exemplo04">Exemplo 04</a></li>
+        </ul>
+
       </footer>
     </div>
 

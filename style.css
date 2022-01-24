@@ -42,7 +42,7 @@ header{
     border-bottom: 2px solid #b0e0ea;
     padding: 20px 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 4fr;
 
 }
 
