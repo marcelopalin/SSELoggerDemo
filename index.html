@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Option 1: Include in HTML -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <title>Grid</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- CONTAINER COM GRID-AREA
+      1a linha temos 2 colunas e vou preencher com header header
+      2a linha temos 2 colunas e vou preencher com sidebar main
+      3a linha temos 2 colunas e vou preencher com footer footer
+    -->
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <li class="logo">
+              <a href="#"><i class="fa fa-address-book"></i> </a>
+            </li>
+            <li>
+              <a
+                href="https://getflywheel.com/layout/combine-flexbox-and-css-grids-for-layouts-how-to/"
+                target="blank"
+                >Leaning about this CSS</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=QyFcl_Fba-k"
+                target="blank"
+                >Github Pages</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a href="#"><i class="fa fa-adn fa-2x"></i> </a>
+      </header>
+
+      <aside class="sidebar">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="#exemplo01">Exemplo 01</a></li>
+          <li><a href="#exemplo02">Exemplo 02</a></li>
+          <li><a href="#exemplo03">Exemplo 03</a></li>
+          <li><a href="#exemplo04">Exemplo 04</a></li>
+        </ul>
+      </aside>
+
+      <section class="main">
+        <h2 id="exemplo01">
+          Realtime Log Streaming with FastAPI and Server-Sent Events
+        </h2>
+        <div class="card">
+          <div class="card-body">
+            Para começar a entender sobre SSE sugiro a leitura do artigo
+            <a href="https://amittallapragada.github.io/docker/fastapi/python/2020/12/23/server-side-events.html">
+              <b>Veja aqui</b>
+            </a>
+
+          </div>
+        </div>
+
+        <div>
+        </div>
+        <p>
+          Este projeto de exemplo se utiliza da api
+          https://developer.mozilla.org/pt-BR/docs/Web/API/EventSource A
+          interface EventSource é usada para receber eventos enviados pelo
+          servidor (server-sent events). Ele se conecta via HTTP em um servidor
+          e recebe eventos com o formato text/event-stream.
+        </p>
+
+        <p>
+          A conexão permanece
+          aberta até ser fechada chamando EventSource.close(). Assim que
+          a conexão estiver aberta, mensagens recebidas do servidor são
+          entregues para o seu código na forma de eventos message. Ao contrário
+          dos WebSockets, server-sent events são unidirecionais; ou seja,
+          mensagens são entregues em uma direção, do servidor para o cliente
+          (por exemplo, um navegador web). Isso torna-os uma excelente escolha
+          quando **não há** necessidade de enviar mensagens do cliente para o
+          servidor.
+        </p>
+      </section>
+
+      <footer>
+        <h3>CSS Grid Layout Example</h3>
+        <p>Hope you enjoyed learning about CSS Grid Layouts!</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+  </script>
+
+  </body>
+</html>
