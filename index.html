@@ -1,188 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Option 1: Include in HTML -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <title>Grid</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <!-- CONTAINER COM GRID-AREA
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Option 1: Include in HTML -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Server-Sent Events</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+  <!-- CONTAINER COM GRID-AREA
       1a linha temos 2 colunas e vou preencher com header header
       2a linha temos 2 colunas e vou preencher com sidebar main
       3a linha temos 2 colunas e vou preencher com footer footer
     -->
-    <div class="container">
-      <header>
-        <nav>
-          <ul>
-            <li class="logo">
-              <a href="#"><i class="fa fa-address-book"></i> </a>
-            </li>
-            <li>
-              <a
-                href="https://getflywheel.com/layout/combine-flexbox-and-css-grids-for-layouts-how-to/"
-                target="blank"
-                >Leaning about this CSS</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/watch?v=QyFcl_Fba-k"
-                target="blank"
-                >Github Pages</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://liyi-zhou.medium.com/how-to-embed-google-colaboratory-into-medium-in-3-steps-487b525b103c"
-                target="blank"
-                >Inserir Colab na Página</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.profissionaisti.com.br/gist-um-modo-de-compartilhar-blocos-de-codigo/#:~:text=Dentro%20do%20GitHub%20existe%20tamb%C3%A9m,sites%2C%20f%C3%B3runs%20e%20outros%20locais."
-                target="blank"
-                >Gist - insira código dentro da sua página</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      <aside class="sidebar">
-        <h3>Menu</h3>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <nav>
         <ul>
-          <li><a href="#exemplo01">Exemplo 01</a></li>
-          <li><a href="#exemplo02">Exemplo 02</a></li>
-          <li><a href="#exemplo03">Exemplo 03</a></li>
-          <li><a href="#exemplo04">Exemplo 04</a></li>
+          <li class="logo">
+            <a href="https://github.com/marcelopalin/SSELoggerDemo"><i class="fa fa-github fa-2x"
+                aria-hidden="true"></i>GitHub</a>
+          </li>
+          <li>
+            <a href="https://getflywheel.com/layout/combine-flexbox-and-css-grids-for-layouts-how-to/"
+              target="blank">Leaning about this CSS</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=QyFcl_Fba-k" target="blank">Github Pages</a>
+          </li>
+          <li>
+            <a href="https://liyi-zhou.medium.com/how-to-embed-google-colaboratory-into-medium-in-3-steps-487b525b103c"
+              target="blank">Inserir Colab na Página</a>
+          </li>
+          <li>
+            <a href="https://www.profissionaisti.com.br/gist-um-modo-de-compartilhar-blocos-de-codigo/#:~:text=Dentro%20do%20GitHub%20existe%20tamb%C3%A9m,sites%2C%20f%C3%B3runs%20e%20outros%20locais."
+              target="blank">Gist - insira código dentro da sua página</a>
+          </li>
         </ul>
-      </aside>
+      </nav>
+    </header>
 
-      <!-- Main -->
-      <section class="main">
-        <!-- Exemplo 01 -->
-        <div id="exemplo01">
-          <h2>Realtime Log Streaming with FastAPI and Server-Sent Events</h2>
-          <div class="card">
-            <div class="card-body">
-              Para começar a entender sobre SSE sugiro a leitura do artigo
-              <a
-                href="https://amittallapragada.github.io/docker/fastapi/python/2020/12/23/server-side-events.html"
-              >
-                <b>Veja aqui</b>
-              </a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/QyFcl_Fba-k"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
-              </div>
-            </div>
-          </div>
+    <!-- sidebar - Menu -->
+    <aside class="sidebar">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="referencias.html">Referências</a></li>
+        <li><a href="#exemplo01">Exemplo 01</a></li>
+        <li><a href="#exemplo02">Exemplo 02</a></li>
+        <li><a href="#exemplo03">Exemplo 03</a></li>
+        <li><a href="#exemplo04">Exemplo 04</a></li>
+      </ul>
+    </aside>
 
-          <div></div>
-          <p>
-            Este projeto de exemplo se utiliza da api
-            https://developer.mozilla.org/pt-BR/docs/Web/API/EventSource A
-            interface EventSource é usada para receber eventos enviados pelo
-            servidor (server-sent events). Ele se conecta via HTTP em um
-            servidor e recebe eventos com o formato text/event-stream.
-          </p>
+    <!-- Main -->
+    <section class="main">
+      <!-- Exemplo 01 -->
+      <div id="exemplo01">
+        <h2>Realtime Log Streaming with FastAPI and Server-Sent Events</h2>
+        <div class="card">
+          <div class="card-body">
+            Antes de começar a leitura do seguinte artigo:
+            <a href="https://amittallapragada.github.io/docker/fastapi/python/2020/12/23/server-side-events.html">
+              <b>Artigo - Leia aqui</b>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>
+              Este projeto de exemplo se utiliza da api
+              <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/EventSource">EventSource</a>
+              A interface EventSource é usada para receber eventos enviados pelo
+              servidor (server-sent events). Ele se conecta via HTTP em um
+              servidor e recebe eventos com o formato text/event-stream.
+            </p>
 
-          <p>
-            A conexão permanece aberta até ser fechada chamando
-            EventSource.close(). Assim que a conexão estiver aberta, mensagens
-            recebidas do servidor são entregues para o seu código na forma de
-            eventos message. Ao contrário dos WebSockets, server-sent events são
-            unidirecionais; ou seja, mensagens são entregues em uma direção, do
-            servidor para o cliente (por exemplo, um navegador web). Isso
-            torna-os uma excelente escolha quando **não há** necessidade de
-            enviar mensagens do cliente para o servidor.
-          </p>
-          <p>
-            <script src="https://gist.github.com/marcelopalin/29d0413b1f7147d7effb9cc9f8b88bbf.js"></script>
-          </p>
+            <p>
+              A conexão permanece aberta até ser fechada chamando
+              EventSource.close(). Assim que a conexão estiver aberta, mensagens
+              recebidas do servidor são entregues para o seu código na forma de
+              eventos message. Ao contrário dos WebSockets, server-sent events são
+              unidirecionais; ou seja, mensagens são entregues em uma direção, do
+              servidor para o cliente (por exemplo, um navegador web). Isso
+              torna-os uma excelente escolha quando <b>não há necessidade de
+                enviar mensagens do cliente para o servidor</b>.
+            </p>
+            <h6>Como executar o exemplo?</h6>
+
+            <p><b>Requisitos:</b> poetry instalado.</p>
+            <p>
+              <pre>
+                  <code class="language-markup">
+                      cd SSELoggerDemo
+                      poetry shell
+                      poetry install
+                  </code>
+              </pre>
+            </p>
+            <p>Abra um outro terminal, também ative-o com o comando:
+              <pre><code class="language-markup">
+                poetry shell
+                uvicorn app.main:app --reload --port 8000
+            </pre></code></p>
+            <p>Se acessar o endereço <a href="http://127.0.0.1:8000/docs" target="blank">http://127.0.0.1:8000/docs</a> você verá a documentação das rotas criadas.
+            <ul>
+              <li> A rota http://127.0.0.1:8000/stream-logs fica lendo o arquivo de log:  </li>
+            </ul>
+            </p>
+            <p>
+              <pre>
+                <code class="language-python">
+                  import psutil
+                  import platform
+                  from datetime import datetime
+                  import time
+                  import asyncio
+                  import json
+
+                  async def main():
+                      # it = 0
+                      while True:
+                          # cpu_contagem = psutil.cpu_count(logical=False)
+                          # cpu_nucleos = psutil.cpu_count(logical=True)
+                          # dict_cpu = {"contagem": cpu_contagem, "nucleos": cpu_nucleos,
+                          #             "porcentagem": cpu_porcentagem}
+                          cpu_porcentagem = psutil.cpu_percent()
+                          dict_cpu = {"porcentagem": cpu_porcentagem * 10.}
+                          yield {
+                              "event": "msg_cpu",
+                              "retry": 3000, # tempo de reconexão - 3000 ms
+                              "data": json.dumps(dict_cpu),
+                          }
+                          await asyncio.sleep(0.5)
+
+                </code>
+            </pre>
+
+            </p>
+          </div>
         </div>
 
-        <!-- Exemplo 02 -->
-        <div id="exemplo02">
-          <h2>Exemplo 02</h2>
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
-              </div>
+
+      </div>
+
+      <!-- Exemplo 02 -->
+      <div id="exemplo02">
+        <h2>Exemplo 02</h2>
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
             </div>
           </div>
-
-          <p>
-            Texto do Exemplo 02
-          </p>
-
         </div>
 
-        <!-- Exemplo 03 -->
-        <div id="exemplo03">
-          <h2>Exemplo 03</h2>
-          <div class="card">
-            <div class="card-body">
-              <div>
-                <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
-              </div>
+        <p>Texto do Exemplo 02</p>
+      </div>
+
+      <!-- Exemplo 03 -->
+      <div id="exemplo03">
+        <h2>Exemplo 03</h2>
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <script src="https://gist.github.com/marcelopalin/1e93eb8ffe32baa305150fec019b5848.js"></script>
             </div>
           </div>
-
-          <p>
-            Texto do Exemplo 02
-          </p>
-
         </div>
-      </section>
 
-      <footer>
+        <p>Texto do Exemplo 02</p>
+      </div>
+    </section>
 
-        <a href="https://github.com/marcelopalin/SSELoggerDemo"><i class="fa fa-github fa-2x" aria-hidden="true"></i>GitHub Origem </a>
-      </footer>
-    </div>
+    <footer>
+      <a href="https://github.com/marcelopalin/SSELoggerDemo"><i class="fa fa-github fa-2x"
+          aria-hidden="true"></i>GitHub Origem
+      </a>
+    </footer>
+  </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-python.min.js"></script>
+
+</body>
+
 </html>
