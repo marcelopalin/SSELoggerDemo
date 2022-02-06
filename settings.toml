@@ -1,0 +1,30 @@
+[default]
+# veja em https://dynaconf.readthedocs.io/en/docs_223/guides/environment_variables.html
+CURRENT_ENV = "@jinja {{this.current_env | lower}}" # development or production
+HOME_DIR = "@jinja {{env.HOME}}"
+DIR_INPUT="Entrada"
+DIR_OUTPUT="Saida"
+URL_CHECK_PUBLIC_IP = "https://ifconfig.me"
+DEBUG = false
+NUM_TENTATIVAS_DOWNLOAD = 4
+NUMERO_PROCESSADORES = 8
+EXE_CDO = "cdo"
+
+APP_NAME="API FastAPI on Docker! 🚀🇧🇷"
+APP_VERSAO="1.0.0"
+APP_DESCRIPTION="API Backend ServerSide! 🇧🇷"
+DIR_OUTPUT_IMAGES = "@jinja {{env.DIR_OUTPUT}}/images/"
+
+# LOG FILES
+LOG_MONITOR = "logs/app.log"
+
+# 0 = Segunda,..., 6 = Domingo
+DIAS_SEMANA=['Segunda-feira','Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']
+
+
+[development]
+RUN_S00=false
+
+
+[production]
+RUN_S00=true

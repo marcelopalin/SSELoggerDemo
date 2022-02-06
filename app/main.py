@@ -5,6 +5,7 @@ logs are added to our log file.
 """
 
 from fastapi import FastAPI, Request
+from fastapi.responses import RedirectResponse
 from sse_starlette.sse import EventSourceResponse
 from datetime import datetime
 from sh import tail
@@ -109,3 +110,8 @@ async def send_stream_log(request: Request):
 async def send_stream_cpu():
     evento_cpu = cpu_info()
     return EventSourceResponse(evento_cpu)
+
+
+@app.get("/")
+async def redirect_typer():
+    return RedirectResponse("/docs")

@@ -1,4 +1,37 @@
-## Realtime Log Streaming with FastAPI and Server-Sent Events
+# Realtime Log Streaming with FastAPI and Server-Sent Events
+
+# NOVIDADE
+
+Acrescentei o Docker com Traefik para gerenciar os containers da Aplicação no Localhost.
+
+Para fazer funcionar abra um terminal na raiz do projeto e digite:
+
+```s
+docker-compose up -d
+```
+
+Este comando irá subir o Traefik que pode ser acessado em http://localhost:8000
+
+Depois suba o Backend (FastAPI) e acesse ele em: http://backend.localhost
+
+```s
+docker-compose -f docker-compose-backend.yml up -d
+```
+
+Depois entre na pasta cliente_01 e suba o container que poderá ser acessado em http://cliente01.localhost
+
+```s
+cd cliente01
+docker-compose up -d
+```
+
+Depois entre na pasta cliente_02 e suba o container que poderá ser acessado em http://cliente02.localhost
+
+```s
+cd cliente02
+docker-compose up -d
+```
+
 
 Artigo original:
 https://amittallapragada.github.io/docker/fastapi/python/2020/12/23/server-side-events.html
