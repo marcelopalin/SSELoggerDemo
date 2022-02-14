@@ -10,12 +10,12 @@ Para fazer funcionar abra um terminal na raiz do projeto e digite:
 docker-compose up -d
 ```
 
-Este comando irá subir o Traefik que pode ser acessado em http://localhost:8000
+Este comando irá subir o Traefik que pode ser acessado em http://localhost:8080
 
 Depois suba o Backend (FastAPI) e acesse ele em: http://backend.localhost
 
 ```s
-docker-compose -f docker-compose-backend.yml up -d
+docker-compose -f docker-compose-backend.yml up -d --build
 ```
 
 Depois entre na pasta cliente_01 e suba o container que poderá ser acessado em http://cliente01.localhost

@@ -95,7 +95,7 @@ async def gerador_numeros(minimum, maximum, request):
 # Esta rota fica lendo os Números e envia para os Clientes
 @app.get('/stream-numbers')
 async def send_stream_numbers(request: Request):
-    evento = gerador_numeros(1, 10, request)
+    evento = gerador_numeros(1, 100, request)
     return EventSourceResponse(evento)
 
 
